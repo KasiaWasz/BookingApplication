@@ -12,13 +12,13 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-import static liquibase.repackaged.org.apache.commons.lang3.StringUtils.isBlank;
-
 @Component
+public
 class BookingValidator implements Validator {
 
     private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     private static final String E_BOOKING_INVALID = "booking.invalid";
+    private static final String E_DATE_INVALID = "date.invalid";
 
     private final BookingService bookingService;
 
@@ -42,66 +42,9 @@ class BookingValidator implements Validator {
 
         BookingForm bookingForm = (BookingForm) target;
 
-        validateStartDate(bookingForm.getStartDate(), errors);
-        validateEndDate(bookingForm.getEndDate(), errors);
-        validateTenant(bookingForm.getTenantId(), errors);
-        validateApartment(bookingForm.getApartmentId(), errors);
         validateBooking(bookingForm.getApartmentId(), bookingForm.getStartDate(), bookingForm.getEndDate(), errors);
     }
 
-    private void validateStartDate(String startDate, Errors errors) {
-
-        if (isBlank(startDate)) {
-
-            errors.rejectValue(BookingForm.F_START_DATE, "startDate is not correct");
-
-            return;
-
-        }
-        try {
-
-            LocalDate.parse(startDate, DATE_TIME_FORMATTER);
-
-        } catch (Exception e) {
-
-            errors.rejectValue(BookingForm.F_START_DATE, "startDate is not correct");
-        }
-    }
-
-    private void validateEndDate(String endDate, Errors errors) {
-
-        if (isBlank(endDate)) {
-
-            errors.rejectValue(BookingForm.F_END_DATE, "endDate is not correct");
-
-            return;
-
-        }
-        try {
-
-            LocalDate.parse(endDate, DATE_TIME_FORMATTER);
-
-        } catch (Exception e) {
-
-            errors.rejectValue(BookingForm.F_END_DATE, "endDate is not correct");
-        }
-    }
-
-    private void validateTenant(Long tenantId, Errors errors) {
-
-        if (tenantId == null) {
-
-            errors.rejectValue(BookingForm.F_TENANT_ID, "tenant must not be null");
-        }
-    }
-
-    private void validateApartment(Long apartmentId, Errors errors) {
-
-        if (apartmentId == null) {
-
-            errors.rejectValue(BookingForm.F_APARTMENT_ID,"apartment must not be null");
-        }
-    }
 
     private void validateBooking(Long apartmentId, String startDate, String endDate, Errors errors) {
 
@@ -112,7 +55,7 @@ class BookingValidator implements Validator {
 
         if (targetEndDate.isBefore(targetStartDate)) {
 
-            errors.rejectValue(BookingForm.F_END_DATE, "endDate.must.be.after.startDate");
+            errors.rejectValue(BookingForm.F_END_DATE, E_DATE_INVALID);
             return;
         }
 
