@@ -110,6 +110,7 @@ class BookingServiceTest {
     @Test
     void testUpdateBooking() {
 
+        //given
         Long id = 1L;
         List<Apartment> apartments = new ArrayList<>();
         Apartment apartment = new Apartment();
