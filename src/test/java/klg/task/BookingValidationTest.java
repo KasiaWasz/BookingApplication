@@ -41,7 +41,7 @@ class BookingValidationTest {
     }
 
     @Test
-    void shouldCatchIncorrectStartDate() throws Exception {
+    void shouldCatchIncorrectStartDate() {
 
         //given
         bookingForm.setStartDate("2019-12-26");
@@ -60,7 +60,7 @@ class BookingValidationTest {
     }
 
     @Test
-    void shouldCatchNotAvailableApartment() throws Exception {
+    void shouldCatchNotAvailableApartment() {
 
         //given
         bookingForm.setStartDate("2023-09-01");
@@ -82,7 +82,7 @@ class BookingValidationTest {
     }
 
     @Test
-    void shouldAddBooking() throws Exception {
+    void shouldAddBooking() {
 
         //given
         bookingForm.setStartDate("2023-09-04");
