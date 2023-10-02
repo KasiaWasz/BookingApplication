@@ -26,7 +26,7 @@ class BookingDatabaseQueries extends AbstractQueries<Booking> implements Booking
     }
 
 
-    public List<Optional<BookingDto>> getBookingDtoByTenantName(String name) {
+    public List<Optional<BookingDto>> findBookingDtoByTenantName(String name) {
 
         Assert.notNull(name, "name must not be null");
 
@@ -51,7 +51,7 @@ class BookingDatabaseQueries extends AbstractQueries<Booking> implements Booking
         }
     }
 
-    public List<Optional<BookingDto>> getBookingDtoByApartemntId(Long apartmentId) {
+    public List<Optional<BookingDto>> findBookingDtoByApartemntId(Long apartmentId) {
 
         Assert.notNull(apartmentId, "apartmentId must not be null");
 

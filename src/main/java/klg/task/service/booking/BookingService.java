@@ -42,23 +42,30 @@ public class BookingService {
         this.apartmentService = apartmentService;
     }
 
+    public Booking getById(Long id) {
+
+        Assert.notNull(id, "id must not be null");
+
+        return bookingQueries.getById(id);
+    }
+
     public List<BookingDto> getAllBookingsDto() {
 
         return bookingQueries.getAllBookingDtos();
     }
 
-    public List<Optional<BookingDto>> getBookingDtoByTenantName(String name) {
+    public List<Optional<BookingDto>> findBookingDtoByTenantName(String name) {
 
         Assert.notNull(name, "name should not be null");
 
-        return bookingQueries.getBookingDtoByTenantName(name);
+        return bookingQueries.findBookingDtoByTenantName(name);
     }
 
-    public List<Optional<BookingDto>> getBookingDtoByApartmentId(Long id) {
+    public List<Optional<BookingDto>> findBookingDtoByApartmentId(Long id) {
 
         Assert.notNull(id, "id must not be null");
 
-        return bookingQueries.getBookingDtoByApartemntId(id);
+        return bookingQueries.findBookingDtoByApartemntId(id);
     }
 
     public void updateBooking(Long id, BookingForm bookingForm) {
@@ -104,9 +111,9 @@ public class BookingService {
 
         return apartments.stream()
                 .filter(apartment -> apartment.getId().equals(apartmentId))
-                .map(Apartment::getLandlordId)
                 .findFirst()
-                .orElseThrow(() -> new RuntimeException("Nie znaleziono pasującego apartamentu"));
+                .map(Apartment::getLandlordId)
+                .orElse(null);
     }
 
     private BigDecimal calculatePrice(Long apartmentId, LocalDate startDate, LocalDate endDate) {

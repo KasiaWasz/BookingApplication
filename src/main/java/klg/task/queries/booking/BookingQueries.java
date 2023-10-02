@@ -8,9 +8,9 @@ import java.util.Optional;
 
 public interface BookingQueries {
 
-    List<Optional<BookingDto>> getBookingDtoByTenantName(String name);
+    List<Optional<BookingDto>> findBookingDtoByTenantName(String name);
 
-    List<Optional<BookingDto>> getBookingDtoByApartemntId(Long apartmentId);
+    List<Optional<BookingDto>> findBookingDtoByApartemntId(Long apartmentId);
 
     Booking getById(Long id);
 

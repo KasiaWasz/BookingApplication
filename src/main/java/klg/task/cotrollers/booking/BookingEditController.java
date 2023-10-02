@@ -58,8 +58,6 @@ class BookingEditController {
         @RequestBody BookingForm form,
         BindingResult bindingResult) {
 
-        System.out.println(id);
-
         if (bindingResult.hasErrors()) {
 
             return ResponseEntity.status(400).build();

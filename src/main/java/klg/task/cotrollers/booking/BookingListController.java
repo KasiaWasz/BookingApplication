@@ -38,14 +38,14 @@ class BookingListController {
     }
 
     @GetMapping(P_BOOKING_TENANT_LIST)
-    private List<Optional<BookingDto>> getBookingDtoByTenantName(@PathVariable String name){
+    private List<Optional<BookingDto>> findBookingDtoByTenantName(@PathVariable String name){
 
-        return bookingService.getBookingDtoByTenantName(name);
+        return bookingService.findBookingDtoByTenantName(name);
     }
 
     @GetMapping(P_BOOKING_APARTMENT_LIST)
-    private List<Optional<BookingDto>> getBookingDtoByApartmentId(@PathVariable Long id){
+    private List<Optional<BookingDto>> findBookingDtoByApartmentId(@PathVariable Long id){
 
-        return bookingService.getBookingDtoByApartmentId(id);
+        return bookingService.findBookingDtoByApartmentId(id);
     }
 }
