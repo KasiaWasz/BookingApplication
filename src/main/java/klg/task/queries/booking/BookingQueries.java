@@ -1,6 +1,6 @@
 package klg.task.queries.booking;
 
-import klg.task.dtos.BookingDto;
+import klg.task.dtos.booking.BookingDto;
 import klg.task.models.booking.Booking;
 
 import java.util.List;

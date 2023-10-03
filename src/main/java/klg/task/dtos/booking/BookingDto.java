@@ -1,4 +1,4 @@
-package klg.task.dtos;
+package klg.task.dtos.booking;
 
 import org.springframework.util.Assert;
 

@@ -2,7 +2,7 @@ package klg.task;
 
 import klg.task.cotrollers.booking.BookingForm;
 import klg.task.cotrollers.booking.BookingValidator;
-import klg.task.dtos.BookingDto;
+import klg.task.dtos.booking.BookingDto;
 import klg.task.service.booking.BookingService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

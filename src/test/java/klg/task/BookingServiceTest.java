@@ -1,7 +1,7 @@
 package klg.task;
 
 import klg.task.cotrollers.booking.BookingForm;
-import klg.task.dtos.BookingDto;
+import klg.task.dtos.booking.BookingDto;
 import klg.task.models.apartment.Apartment;
 import klg.task.models.booking.Booking;
 import klg.task.models.tenant.Tenant;
@@ -9,12 +9,10 @@ import klg.task.queries.booking.BookingQueries;
 import klg.task.repository.booking.BookingRepository;
 import klg.task.service.apartment.ApartmentService;
 import klg.task.service.booking.BookingService;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.math.BigDecimal;

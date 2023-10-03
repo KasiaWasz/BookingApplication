@@ -1,6 +1,6 @@
 package klg.task.queries.booking;
 
-import klg.task.dtos.BookingDto;
+import klg.task.dtos.booking.BookingDto;
 import klg.task.models.booking.Booking;
 import klg.task.models.tenant.Tenant;
 import klg.task.queries.AbstractQueries;

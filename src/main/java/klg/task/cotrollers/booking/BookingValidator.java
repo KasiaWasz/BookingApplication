@@ -1,6 +1,6 @@
 package klg.task.cotrollers.booking;
 
-import klg.task.dtos.BookingDto;
+import klg.task.dtos.booking.BookingDto;
 import klg.task.service.booking.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

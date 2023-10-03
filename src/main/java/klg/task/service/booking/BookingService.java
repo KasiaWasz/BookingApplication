@@ -1,7 +1,7 @@
 package klg.task.service.booking;
 
 import klg.task.cotrollers.booking.BookingForm;
-import klg.task.dtos.BookingDto;
+import klg.task.dtos.booking.BookingDto;
 import klg.task.models.apartment.Apartment;
 import klg.task.models.booking.Booking;
 import klg.task.queries.booking.BookingQueries;
@@ -40,13 +40,6 @@ public class BookingService {
         this.bookingQueries = bookingQueries;
         this.bookingRepository = bookingRepository;
         this.apartmentService = apartmentService;
-    }
-
-    public Booking getById(Long id) {
-
-        Assert.notNull(id, "id must not be null");
-
-        return bookingQueries.getById(id);
     }
 
     public List<BookingDto> getAllBookingsDto() {

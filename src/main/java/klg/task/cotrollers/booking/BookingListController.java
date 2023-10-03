@@ -1,7 +1,7 @@
 package klg.task.cotrollers.booking;
 
 import klg.task.service.booking.BookingService;
-import klg.task.dtos.BookingDto;
+import klg.task.dtos.booking.BookingDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.GetMapping;
