@@ -37,12 +37,12 @@ public class Landlord implements Model {
         this.id = id;
     }
 
-    public String getFirstName() {
+    public String getFullName() {
         return fullName;
     }
 
-    public void setFirstName(String firstName) {
-        this.fullName = firstName;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     @Override
