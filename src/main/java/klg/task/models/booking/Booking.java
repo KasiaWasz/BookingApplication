@@ -11,6 +11,7 @@ import java.util.Objects;
 @Entity
 public class Booking implements Model {
 
+    //dodałam też id wynajmowanego apartamentu
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column

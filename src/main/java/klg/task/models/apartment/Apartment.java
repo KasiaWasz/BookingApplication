@@ -10,6 +10,7 @@ import java.util.Objects;
 @Entity
 public class Apartment implements Model {
 
+    //dodałam też id właściciela
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
