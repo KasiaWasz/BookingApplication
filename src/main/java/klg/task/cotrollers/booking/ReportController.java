@@ -1,7 +1,7 @@
 package klg.task.cotrollers.booking;
 
 import klg.task.dtos.report.ReportBookingTermDto;
-import klg.task.service.PdfGenerator;
+import klg.task.service.generator.PdfGenerator;
 import klg.task.service.booking.ReportBookingTerm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;

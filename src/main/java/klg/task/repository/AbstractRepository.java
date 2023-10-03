@@ -14,8 +14,8 @@ public class AbstractRepository<M extends Model> {
 
     public AbstractRepository(SessionFactory sessionFactory, Class<M> modelClass) {
 
-        Assert.notNull(sessionFactory, "sessionFactory must not be null");
-        Assert.notNull(modelClass, "modelClass must not be null");
+        Assert.notNull(sessionFactory, "sessionFactory should not be null");
+        Assert.notNull(modelClass, "modelClass should not be null");
 
         this.sessionFactory = sessionFactory;
         this.modelClass = modelClass;
@@ -23,7 +23,7 @@ public class AbstractRepository<M extends Model> {
 
     public void saveOrUpdate(M model) {
 
-        Assert.notNull(model, "model must not be null");
+        Assert.notNull(model, "model should not be null");
 
         try (Session session = sessionFactory.openSession()) {
 

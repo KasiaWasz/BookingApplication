@@ -3,6 +3,7 @@ package klg.task.queries.booking;
 import klg.task.dtos.booking.BookingDto;
 import klg.task.models.booking.Booking;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,4 +20,6 @@ public interface BookingQueries {
     List<BookingDto> getAllBookingDtos();
 
     Optional<Booking> findById(Long id);
+
+    List<BookingDto> getBookingByDate(LocalDate startDate, LocalDate endDate);
 }

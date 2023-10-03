@@ -56,12 +56,14 @@ public class BookingService {
 
     public List<Optional<BookingDto>> findBookingDtoByApartmentId(Long id) {
 
-        Assert.notNull(id, "id must not be null");
+        Assert.notNull(id, "id should not be null");
 
         return bookingQueries.findBookingDtoByApartemntId(id);
     }
 
     public void updateBooking(Long id, BookingForm bookingForm) {
+
+        Assert.notNull(bookingForm, "bookingForm should not be null");
 
         LocalDate sDate = LocalDate.parse(bookingForm.getStartDate(), DATE_TIME_FORMATTER);
         LocalDate eDate = LocalDate.parse(bookingForm.getEndDate(), DATE_TIME_FORMATTER);
@@ -83,6 +85,8 @@ public class BookingService {
     }
 
     public void addNewBooking(BookingForm bookingForm) {
+
+        Assert.notNull(bookingForm, "bookingForm should not be null");
 
         LocalDate sDate = LocalDate.parse(bookingForm.getStartDate(), DATE_TIME_FORMATTER);
         LocalDate eDate = LocalDate.parse(bookingForm.getEndDate(), DATE_TIME_FORMATTER);

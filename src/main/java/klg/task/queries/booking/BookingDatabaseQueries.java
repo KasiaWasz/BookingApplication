@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import javax.persistence.criteria.*;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -28,7 +29,7 @@ class BookingDatabaseQueries extends AbstractQueries<Booking> implements Booking
 
     public List<Optional<BookingDto>> findBookingDtoByTenantName(String name) {
 
-        Assert.notNull(name, "name must not be null");
+        Assert.notNull(name, "name should not be null");
 
         try (Session session = sessionFactory.openSession()) {
             CriteriaBuilder cb = session.getCriteriaBuilder();
@@ -53,7 +54,7 @@ class BookingDatabaseQueries extends AbstractQueries<Booking> implements Booking
 
     public List<Optional<BookingDto>> findBookingDtoByApartemntId(Long apartmentId) {
 
-        Assert.notNull(apartmentId, "apartmentId must not be null");
+        Assert.notNull(apartmentId, "apartmentId should not be null");
 
         try (Session session = sessionFactory.openSession()) {
 
@@ -67,6 +68,30 @@ class BookingDatabaseQueries extends AbstractQueries<Booking> implements Booking
             return session.createQuery(cq)
                     .getResultList().stream()
                     .map(booking -> Optional.of(toBookingDto(booking)))
+                    .collect(Collectors.toList());
+        }
+    }
+
+    public List<BookingDto> getBookingByDate(LocalDate startDate, LocalDate endDate) {
+
+        Assert.notNull(startDate, "startDate should not be null");
+        Assert.notNull(endDate, "startDate should not be null");
+
+        try (Session session = sessionFactory.openSession()) {
+
+            CriteriaBuilder cb = session.getCriteriaBuilder();
+            CriteriaQuery<Booking> cq = cb.createQuery(Booking.class);
+            Root<Booking> root = cq.from(Booking.class);
+
+            cq.select(root)
+                    .where(
+                            cb.greaterThanOrEqualTo(root.get("startDate"), startDate),
+                            cb.lessThanOrEqualTo(root.get("endDate"), endDate)
+                    );
+
+            return session.createQuery(cq)
+                    .getResultList().stream()
+                    .map(this::toBookingDto)
                     .collect(Collectors.toList());
         }
     }

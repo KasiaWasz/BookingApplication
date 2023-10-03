@@ -20,8 +20,8 @@ public class AbstractQueries<M extends Model> {
 
     protected AbstractQueries(SessionFactory sessionFactory, Class<M> modelClass) {
 
-        Assert.notNull(sessionFactory, "sessionFactory must not be null");
-        Assert.notNull(modelClass, "modelClass must not be null");
+        Assert.notNull(sessionFactory, "sessionFactory should not be null");
+        Assert.notNull(modelClass, "modelClass should should be null");
 
         this.sessionFactory = sessionFactory;
         this.modelClass = modelClass;

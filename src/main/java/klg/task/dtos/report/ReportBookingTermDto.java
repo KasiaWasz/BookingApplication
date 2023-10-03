@@ -6,15 +6,18 @@ public class ReportBookingTermDto {
 
     private String apartment;
     private Long days;
+    private Long bookingCount;
 
 
-    public ReportBookingTermDto(String apartment, Long days) {
+    public ReportBookingTermDto(String apartment, Long days, Long bookingCount) {
 
         Assert.notNull(apartment, "apartment should not be null");
         Assert.notNull(days, "days should not be null");
+        Assert.notNull(bookingCount, "bookingCount should not be null");
 
         this.apartment = apartment;
         this.days = days;
+        this.bookingCount = bookingCount;
     }
 
 
@@ -28,5 +31,9 @@ public class ReportBookingTermDto {
 
     public Long getDays() {
         return days;
+    }
+
+    public Long getBookingCount() {
+        return bookingCount;
     }
 }

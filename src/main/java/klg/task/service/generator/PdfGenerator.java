@@ -1,4 +1,4 @@
-package klg.task.service;
+package klg.task.service.generator;
 
 import klg.task.dtos.report.ReportBookingTermDto;
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -17,7 +17,6 @@ public class PdfGenerator {
 
     public void generatePdf(List<ReportBookingTermDto> reportData, String outputPath) throws IOException {
 
-        int bookingCount = reportData.size();
         PDDocument document = new PDDocument();
         PDPage page = new PDPage(PDRectangle.A4);
         document.addPage(page);
@@ -28,14 +27,13 @@ public class PdfGenerator {
             contentStream.beginText();
             contentStream.newLineAtOffset(50, 700);
 
-            contentStream.showText("Ile razy obiekt byl wynajmowany " + bookingCount);
-            contentStream.newLineAtOffset(0, -20);
-
             for (ReportBookingTermDto dto : reportData) {
 
                 contentStream.showText("Nazwa obiektu: " + dto.getApartment());
                 contentStream.newLineAtOffset(0, -20);
                 contentStream.showText("Ilosc dni rezerwacji: " + dto.getDays());
+                contentStream.newLineAtOffset(0, -20);
+                contentStream.showText("Ile razy obiekt byl wynajmowany " + dto.getBookingCount());
                 contentStream.newLineAtOffset(0, -20);
             }
 

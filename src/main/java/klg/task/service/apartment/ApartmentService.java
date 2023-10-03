@@ -17,7 +17,7 @@ public class ApartmentService {
     @Autowired
     private ApartmentService(ApartmentQueries apartmentQueries) {
 
-        Assert.notNull(apartmentQueries, "apartmentQueries must not be null");
+        Assert.notNull(apartmentQueries, "apartmentQueries should not be null");
 
         this.apartmentQueries = apartmentQueries;
     }
@@ -25,7 +25,7 @@ public class ApartmentService {
 
     public Apartment getById(Long id) {
 
-        Assert.notNull(id, "id must not be null");
+        Assert.notNull(id, "id should not be null");
 
         return apartmentQueries.getById(id);
     }
